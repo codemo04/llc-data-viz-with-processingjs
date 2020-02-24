@@ -1,8 +1,8 @@
 # Ladies Learning Code
 
-## Intro to ProcessingJS
+## Intro to p5.js
 
-A full day introductory to ProcessingJS workshop. Students should already have basic understanding of HTML & CSS.
+A full day introductory to p5.js workshop. Students should already have basic understanding of HTML & CSS.
 
 <p class="left">Content created by <a href="http://christinatruong.com">Christina Truong</a>, <a href="http://kathrynbarrett.ca">Kathryn Barrett</a>, <a href="http://sspboyd.ca">Stephen Boyd</a>, and <a href="http://www.wolfewylie.com">William Wolfe-Wylie</a>
 

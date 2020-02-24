@@ -1022,13 +1022,13 @@ let fails = 'This string's value is not going to work!';
 
         The draw() function includes everything that's added on top of the initial state. In our case, that includes drawing a rectangle on top of our canvas background.
   
-        ```
-          setup() {
+        ```javascript
+          function setup() {
             //the code for your basic setup functions goes here
             createCanvas(700,500);
           }
 
-          draw() {
+          function draw() {
             //The code to describe what you want to draw goes here.
             rect(10,20,130,260);
           }

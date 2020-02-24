@@ -175,7 +175,7 @@
         Here's what JavaScript looks like:
 
         ```
-        var myVariable = "Hello World";
+        let myVariable = "Hello World";
         function sayHello(){
           alert(myVariable);
         }
@@ -317,15 +317,15 @@
       <script type="text/template">
         # Declaring (creating) a variable
 
-        * use the keyword `var`
+        * use the keyword `let`
         * name the variable anything you want*
         * end the command with a semi-colon (`;`)
 
         ```javascript
-        var myVariable = "Hello!";
+        let myVariable = "Hello!";
         ```
 
-        The value `Hello` is given to the name `myVariable` and is declared using the keyword `var`. This is *assigning* a value to the *variable*.
+        The value `Hello` is given to the name `myVariable` and is declared using the keyword `let`. This is *assigning* a value to the *variable*.
 
         Evaluate everything to the right of the equals sign, then assign the value to the variable on the left of the equals sign.
 
@@ -349,9 +349,9 @@
         * JavaScript is case sensitive
           * so variable names are also case sensitive
         * Use a descriptive names:
-        `var firstName;` ← Clear that first name will go here.
-        `var fn;`        ← Not as obvious as firstName.
-        `var x; `        ← Not clear at all.
+        `let firstName;` ← Clear that first name will go here.
+        `let fn;`        ← Not as obvious as firstName.
+        `let x; `        ← Not clear at all.
       </script>
     </section>
 
@@ -371,15 +371,15 @@
         Strings must be contained in quotes.
 
         ```javascript
-        var greeting = "Hello!";
+        let greeting = "Hello!";
         ```
 
         ```javascript
-        var greeting = "Good morning!";
+        let greeting = "Good morning!";
         ```
 
         ```javascript
-        var greeting = "Good evening!";
+        let greeting = "Good evening!";
         ```
       </script>
     </section>
@@ -391,17 +391,17 @@
         You can *add* strings together to join multiple values. This is called **concatenation**.
 
         ```javascript
-        var greeting = "Good";
-        var greetingTime = "morning";
-        var greetingFull = greeting + " " + greetingTime + "!";
+        let greeting = "Good";
+        let greetingTime = "morning";
+        let greetingFull = greeting + " " + greetingTime + "!";
         ```
 
         The JavaScript above **concatenates** the three items together like so:
 
         ```
-        var greetingFull = greeting + " " + greetingTime + "!";
-        var greetingFull = Good + space + morning + exclamation mark
-        var greetingFull = Good morning!
+        let greetingFull = greeting + " " + greetingTime + "!";
+        let greetingFull = Good + space + morning + exclamation mark
+        let greetingFull = Good morning!
         ```
       </script>
     </section>
@@ -416,7 +416,7 @@
 
         >What is the syntax for creating a variable and assigning a string value?
 
-        <pre class="delayed"><code>var favFood = "pizza";</code></pre>
+        <pre class="delayed"><code>let favFood = "pizza";</code></pre>
 
         <blockquote class="delayed"><p>Add the above code into the console. What value gets returned?<p></blockquote>
 
@@ -432,12 +432,12 @@
 
         When using the console tool, it will automatically return a value when you input an instruction. Declaring a variable just *stores* the value until you're ready to use it.
 
-        `var favFood` is just holding on to the value, so it returns nothing (undefined). But now, JavaScript knows it exists.
+        `let favFood` is just holding on to the value, so it returns nothing (undefined). But now, JavaScript knows it exists.
 
         To actually **use** the variable, just type `favFood` into the console. It will now **return** the value that it was storing and look something like this:
 
         ```javascript
-        > var favFood = "pizza";
+        > let favFood = "pizza";
         < undefined
         > favFood;
         < "pizza"
@@ -471,7 +471,7 @@ Strings values can be wrapped in either 'single quotes' or "double quotes." You 
 But be careful! In the example below, this will cause an error.
 
 ```javascript
-var fails = 'This string's value is not going to work!';
+let fails = 'This string's value is not going to work!';
 /*          ^           ^
             |___________|
             |
@@ -491,13 +491,13 @@ var fails = 'This string's value is not going to work!';
 
         Use double quotes!
         ```javascript
-        var works = "This string's value is going to work!";
+        let works = "This string's value is going to work!";
         ```
 
         Or *escape* it by using a backslash.
 
         ```javascript
-        var alsoWorks = 'This string\'s value will also work!';
+        let alsoWorks = 'This string\'s value will also work!';
         ```
 
         > Try adding each line into your console to check for errors.
@@ -511,7 +511,7 @@ var fails = 'This string's value is not going to work!';
         Variable **values** can also be numbers.
 
         ```
-        var meaningOfLife = 42;
+        let meaningOfLife = 42;
         ```
 
         JavaScript can also do math.
@@ -519,7 +519,7 @@ var fails = 'This string's value is not going to work!';
         `+` addition, `-` subtraction, `*` multiplication, `/` division
 
         ```javascript
-        var addition = 5 + 2;
+        let addition = 5 + 2;
         ```
         This will assign a value of `7`.
 
@@ -533,9 +533,9 @@ var fails = 'This string's value is not going to work!';
         These operations work whether the values are numbers, or the values are stored in a variable.
 
         ```javascript
-         var startingValue = 5;
-         var multiplier = 2;
-         var endingValue = startingValue * multiplier;
+         let startingValue = 5;
+         let multiplier = 2;
+         let endingValue = startingValue * multiplier;
         ```
 
         This will return a value of `10`.
@@ -578,9 +578,9 @@ var fails = 'This string's value is not going to work!';
         It will look something like this:
 
         ```javascript
-        var currentYear = 2016;
-        var birthYear = 1979;
-        var age = currentYear - birthYear;
+        let currentYear = 2016;
+        let birthYear = 1979;
+        let age = currentYear - birthYear;
 
         ```
 
@@ -610,16 +610,16 @@ var fails = 'This string's value is not going to work!';
         # Exercise Solution
 
         ```javascript
-        var secondsPerMinute = 60;
-        var minutesPerHour = 60;
-        var hoursPerDay = 24;
-        var secondsPerDay = secondsPerMinute * minutesPerHour * hoursPerDay;
+        let secondsPerMinute = 60;
+        let minutesPerHour = 60;
+        let hoursPerDay = 24;
+        let secondsPerDay = secondsPerMinute * minutesPerHour * hoursPerDay;
 
         // This command will output the value of secondsPerDay
         secondsPerDay;
 
         // Concatenating strings with the secondsPerDay variable.
-        var sentence = "There are " + secondsPerDay + " seconds per day.";
+        let sentence = "There are " + secondsPerDay + " seconds per day.";
 
         // This command will output the value of sentence.
         sentence;
@@ -665,11 +665,11 @@ var fails = 'This string's value is not going to work!';
         Variables that only contain a `true` or `false` value are called **booleans**.  You can set values to `true` or `false`.
 
         ```javascript
-        var lightIsOn = true;
+        let lightIsOn = true;
         ```
         OR
         ```javascript
-        var lightIsOn = false;
+        let lightIsOn = false;
         ```
 
         Values can also be returned as `true` or `false`.
@@ -694,14 +694,14 @@ var fails = 'This string's value is not going to work!';
         The values are written in `property: value` pairs. Each pair is separated by a comma, except for the last one.
 
         ```
-        var myObject = {
+        let myObject = {
           propertyName: propertyValue,
           anotherPropertyName: anotherPropertyValue
         };
         ```
 
         ```
-        var coffeeOrder = {
+        let coffeeOrder = {
           drinkType: "latte",
           milk: "almond",
           flavor: "caramel"
@@ -717,10 +717,10 @@ var fails = 'This string's value is not going to work!';
         # Declare the Object
 
         ```
-        var coffeeOrder = { };
+        let coffeeOrder = { };
         ```
 
-        * Declare the object with `var`.
+        * Declare the object with `let`.
         * The object name is `coffeeOrder`.
         * The curly bracket starts and ends the object.
       </script>
@@ -750,7 +750,7 @@ var fails = 'This string's value is not going to work!';
 
 
         ```
-        var coffeeOrder = {
+        let coffeeOrder = {
           drinkType: "latte",
           milk: "almond",
           flavor: "caramel"
@@ -771,7 +771,7 @@ var fails = 'This string's value is not going to work!';
         To access the value for the `drinkType` property, it would look like this:
 
         ```
-        var coffeeOrder = {
+        let coffeeOrder = {
           drinkType: "latte",
           milk: "almond",
           flavor: "caramel"
@@ -793,7 +793,7 @@ var fails = 'This string's value is not going to work!';
         Using the object below, let's add this entire code block into our console and practice accessing various property values.
 
         ```javascript
-        var coffeeOrder = {
+        let coffeeOrder = {
           drinkType: "latte",
           milk: "almond",
           flavor: "caramel"
@@ -987,8 +987,8 @@ var fails = 'This string's value is not going to work!';
             //The code to describe what you want to draw goes here.
           };
         }
-        var canvas = document.getElementById("myProcessingProject");
-        var processingInstance = new Processing(canvas, sketchProc);
+        let canvas = document.getElementById("myProcessingProject");
+        let processingInstance = new Processing(canvas, sketchProc);
         ```
 
       </script>
@@ -1020,9 +1020,9 @@ var fails = 'This string's value is not going to work!';
           processing.rect(10,20,130,260);
         };
       }
-      var canvas = document.getElementById("myProcessingProject");
+      let canvas = document.getElementById("myProcessingProject");
       // attaching the sketchProc function to the canvas
-      var processingInstance = new Processing(canvas, sketchProc);
+      let processingInstance = new Processing(canvas, sketchProc);
       ```
     </section>
 
@@ -1033,13 +1033,13 @@ var fails = 'This string's value is not going to work!';
         Let's break that last bit down line-by-line: Starting at the bottom.
 
         ```
-        var canvas = document.getElementById("myProcessingProject");
+        let canvas = document.getElementById("myProcessingProject");
         ```
 
         This goes and gets your canvas element, saving the HTML element into a new variable called "canvas."
 
         ```
-        var processingInstance = new Processing(canvas, sketchProc);
+        let processingInstance = new Processing(canvas, sketchProc);
         ```
         This starts up a new Processing program and sends it two things: Your canvas, and the name of the function that will control how it behaves. 
 
@@ -1165,8 +1165,8 @@ var fails = 'This string's value is not going to work!';
         JavaScript lets you establish global variables that can start off as one value, but adjust as the program runs. So at the top of your sketchProc function, add these two variables:
 
         ```
-        var wide = 10;
-        var high = 20;
+        let wide = 10;
+        let high = 20;
         ```
 
         1. Draw a small rectangle on your page
@@ -1263,8 +1263,8 @@ var fails = 'This string's value is not going to work!';
         One of the easiest ways to add interactivity to your Processing visualization is by tracking mouse movements over the page (or finger presses, as is often the case). Processing comes with a few methods that help with this. 
 
         ```
-          var mouseXposition = processing.mouseX;
-          var mouseYposition = processing.mouseY;
+          let mouseXposition = processing.mouseX;
+          let mouseYposition = processing.mouseY;
         ```
 
         You can use these values to identify where your shapes should appear on your canvas. For example, let's change the center of where our circle is drawn to make it match our mouse position. The circle can therefore track our mouse movements. 
@@ -1471,8 +1471,8 @@ var fails = 'This string's value is not going to work!';
         We can do this before we even run our setup() function: 
 
         ```
-          var myData = processing.loadStrings('data.txt');
-          var mailChimpData = myData[0].split(',');
+          let myData = processing.loadStrings('data.txt');
+          let mailChimpData = myData[0].split(',');
           console.log(mailChimpData);
         ```
 
@@ -1513,7 +1513,7 @@ var fails = 'This string's value is not going to work!';
         processing.draw = function() {
           //The Code you want to draw in goes here.
           processing.background(0,0,0);
-           for (var i = 0; i < mailChimpData.length; i++) {
+           for (let i = 0; i < mailChimpData.length; i++) {
             processing.fill(255,255,255);
             processing.ellipse(100, 100, mailChimpData[i], mailChimpData[i]);
            }
@@ -1563,7 +1563,7 @@ var fails = 'This string's value is not going to work!';
         So in our loop, we can change the center of each circle individually by adding another variable. Before the loop starts -- inside your draw() function but outside of the loop drawing your circles -- add this variable:
 
         ```
-        var toTheLeftToTheLeft = 75;
+        let toTheLeftToTheLeft = 75;
         ```
 
         Then you can change your ellipsis() command to include that variable on the x-axis -- the horizontal axis. 
@@ -1591,8 +1591,8 @@ var fails = 'This string's value is not going to work!';
         processing.draw = function() {
             //The Code you want to draw in goes here.
             processing.background(0,0,0);
-            var toTheLeftToTheLeft = 75;
-             for (var i = 0; i < mailChimpData.length; i++) {
+            let toTheLeftToTheLeft = 75;
+             for (let i = 0; i < mailChimpData.length; i++) {
               processing.stroke(255,255,255);
               processing.noFill();
               processing.ellipse(toTheLeftToTheLeft, 100, mailChimpData[i], mailChimpData[i]);
@@ -1615,8 +1615,8 @@ var fails = 'This string's value is not going to work!';
 
         ```
         function overCircle(CenterX, CenterY, diameter) {
-          var disX = CenterX - processing.mouseX;
-          var disY = CenterY - processing.mouseY;
+          let disX = CenterX - processing.mouseX;
+          let disY = CenterY - processing.mouseY;
           if(Math.sqrt(Math.pow(disX, 2) + Math.pow(disY, 2)) < diameter/2 ) {
             return true;
           } else {
@@ -1691,7 +1691,7 @@ var fails = 'This string's value is not going to work!';
         So at the top of your sketchProc() function, where you set up your data import, you can add this one line to establish your labels: 
 
         ```
-        var labels = ['Deliveries', 'Bounces', 'Opens', 'Clicks', 'Unsubscribers'];
+        let labels = ['Deliveries', 'Bounces', 'Opens', 'Clicks', 'Unsubscribers'];
         ```
       </script>
     </section>

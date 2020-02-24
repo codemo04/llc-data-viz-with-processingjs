@@ -14,8 +14,8 @@
 <script src="processing.min.js"></script>
 <script>
 function sketchProc(processing) {
-	var wide = 50;
-	var high = 25;
+	let wide = 50;
+	let high = 25;
 
 	processing.setup = function() {
 		//the code for your basic setup functions goes here
@@ -52,9 +52,9 @@ function sketchProc(processing) {
 	};
 }
 	
-	var canvas = document.getElementById("myProcessingProject");
+	let canvas = document.getElementById("myProcessingProject");
 	// attaching the sketchProc function to the canvas
-	var processingInstance = new Processing(canvas, sketchProc);
+	let processingInstance = new Processing(canvas, sketchProc);
 
 </script>
 

@@ -9,9 +9,9 @@
 	<script src="processing.min.js"></script>
 
 	<script>
-		var width = 10;
-		var height = 20;
-		var greenValue = 0;
+		let width = 10;
+		let height = 20;
+		let greenValue = 0;
 		function sketchProc(processing) {
 			processing.setup = function() {
 				//the code for your basic setup functions goes here
@@ -43,8 +43,8 @@
 
 		};
  		
- 		var canvas = document.getElementById("myProcessingProject");
-		var processingInstance = new Processing(canvas, sketchProc);
+ 		let canvas = document.getElementById("myProcessingProject");
+		let processingInstance = new Processing(canvas, sketchProc);
 	</script>
 
 </body>

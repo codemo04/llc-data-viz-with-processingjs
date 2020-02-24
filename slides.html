@@ -919,8 +919,6 @@ let fails = 'This string's value is not going to work!';
       <script type="text/template">
         # Functions & p5.js
 
-        A function is one of the most powerful tools in JavaScript. p5.js, as it turns out, is a giant object whith a whole pile of functions available to us.
-
         Remember, p5.js is a <!-- .element: class="delayed" -->**JavaScript library**.
 
         It's library of functions/methods used to simplify your program. You can download it and use in your projects.  There's a lot more to JavaScript but this intro will help to get up and running with p5.js!<!-- .element: class="delayed" -->
@@ -934,16 +932,13 @@ let fails = 'This string's value is not going to work!';
         The first step is telling your web page how to read Processing commands. That means importing the library. Throw this code at the end of your BODY tag.
 
 
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">canvas</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"myProcessingProject"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">canvas</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"p5.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></code></pre>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"p5.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></code></pre>
 
 
 <!-- This is the output from running this code through it:
         <canvas id="myProcessingProject"></canvas>
         <script src="p5.min.js"></script>
 -->
-
-        We add the CANVAS element to hold all of our Processing output. Instead of drawing HTML elements, we're going to be drawing to the canvas. 
 
         You can find the file "p5.min.js" in the projects folder with the files you downloaded. That script tag will give us access to all the functions p5.js has to offer. 
 
@@ -974,9 +969,9 @@ let fails = 'This string's value is not going to work!';
       <script type="text/template">
        #Setting up p5.js for the first time
 
-        Now that you have your SCRIPT tag in your HTML file to import processing, you can add another SCRIPT tag below that one and we can begin to write our first bits of p5.js.
+        Now that you have your SCRIPT tag in your HTML file to import p5, you can add another SCRIPT tag below that one and we can begin to write our first bits of p5.js.
 
-        To begin, we have to create an "instance" of Processing. An instance is basically a copy of the programming that is currently running. You can have more than one instance of Processing just as you can open more than one Word document at the same time.
+        To begin, we create two functions, `draw()` and `setup()`.
 
         ```
         function setup() {
@@ -1017,28 +1012,6 @@ let fails = 'This string's value is not going to work!';
         rect(10,20,130,260);
       }
       ```
-    </section>
-
-    <section class="slide" data-markdown data-toc>
-      <script type="text/template">
-        #What's actually happening here
-
-        Let's break that last bit down line-by-line: Starting at the bottom.
-
-        This sends us back to the top of our sketchProc function to do some setup tasks: 
-
-        ```javascript
-          function setup() {
-            //the code for your basic setup functions goes here
-            createCanvas(700,500);
-          }
-
-          function draw() {
-            //The code to describe what you want to draw goes here.
-            rect(10,20,130,260);
-          }
-        ```
-      </script>
     </section>
 
     <section class="slide" data-markdown>
@@ -1445,12 +1418,34 @@ let fails = 'This string's value is not going to work!';
 
         We don't want to do this every single time the draw() function runs, 60 times per second, we just want to do it once at the top of the program so we don't spend so much energy reading data.
 
-        We can do this before we even run our setup() function: 
+        We start by creating a new function, called preload(). preload() is responsible for loading any extra resources our project might need, so that they're ready to go when setup() and draw() are called.
 
         ```
-          let myData = loadStrings('data.txt');
-          let mailChimpData = myData[0].split(',');
-          console.log(mailChimpData);
+        let myData;
+
+        function preload() {
+          myData = loadStrings('data.txt');
+        }
+        ```
+
+        Why do we declare `let myData;` outside of preload()? If we put it inside, it would get thrown out as soon as the function ended!
+      </script>
+    </section>
+
+    <section class="slide" data-markdown>
+      <script type="text/template">
+        #Working with the data
+        
+        Now that we know for sure that our file will be loaded when setup() is called, we're free to play with it in setup().
+
+        ```
+          let mailChimpData;
+
+          function setup() {
+            //the code for your basic setup functions goes here
+            mailChimpData = myData[0].split(',');
+            console.log(mailChimpData);
+          }
         ```
 
         This is steps. The first step is to grab the text data. Then we need to actually split it into an array so we can treat each value in it separately. 
@@ -1458,7 +1453,29 @@ let fails = 'This string's value is not going to work!';
         The split() function allows you to specify the comma as the separating character, splitting each value from each other using the commas. 
 
         The console.log() at the end allows you to see the final list of data, presented as a nice clean array. 
+      </script>
+    </section>
 
+    <section class="slide" data-markdown>
+      <script type="text/template">
+        #Working with the data
+
+        Altogether, it looks like this:
+
+        ```
+          let myData;
+          let mailChimpData;
+
+          function preload() {
+            myData = loadStrings('data.txt');
+          }
+
+          function setup() {
+            //the code for your basic setup functions goes here
+            mailChimpData = myData[0].split(',');
+            console.log(mailChimpData);
+          }
+        ```
       </script>
     </section>
 
@@ -1468,13 +1485,15 @@ let fails = 'This string's value is not going to work!';
 
         Once you import your data, you can draw different shapes on your canvas in accordance with your data. You can also control the size of those drawings by using the data as attributes like "width" and "height."
 
-        As before, you should create a setup() function that will establish the base of your canvas: 
+        As before, you should add createCanvas() and background() calls in your setup() function to establish the base of your canvas: 
 
         ```
           function setup() {
             //the code for your basic setup functions goes here
             createCanvas(700,500);
             background(0,0,0);
+
+            // ...
           }
         ```
       </script>
@@ -1501,6 +1520,8 @@ let fails = 'This string's value is not going to work!';
 
         This places five circles of varying widths directly on top of each other, with the centres of each of them at 100 pixels in from the left, and 100 pixels down from the top. 
 
+        Why do we need parseInt()? Our mailChimpData array contains **strings**, but ellipse() wants **numbers**. We call parseInt() to transform our strings into integers (numbers without decimal places).
+
       </script>
     </section>
 
@@ -1508,7 +1529,7 @@ let fails = 'This string's value is not going to work!';
       <script type="text/template">
         #But wait a second...
 
-        Don't we want them to be hollow so we can see through them? And shouldn't they be spread out a bit? 
+        Don't we want the circles to be hollow so we can see through them? And shouldn't they be spread out a bit? 
 
         Yes, yes they should be. 
       </script>

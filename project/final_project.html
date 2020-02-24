@@ -1,56 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>My First ProcessingJS project</title>
-</head>
-<body>
+    <head>
+        <title>My First ProcessingJS project</title>
+    </head>
+    <body>
+        <script src="processing.min.js"></script>
+        <script>
+            let myData = loadStrings('data.txt')
+            let mailChimpData = myData[0].split(',')
+            console.log(mailChimpData);
 
-	<canvas id="myProcessingProject"></canvas>
-	<script src="processing.min.js"></script>
+            function overCircle(centerX, centerY, diameter) {
+                let disX = centerX - processing.mouseX;
+                let disY = centerY - processing.mouseY;
+                if(sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
 
-	<script>
+            function setup() {
+                //setup functions
+                createCanvas(900,500);
+                background(0,0,0);
+            }
 
-		function sketchProc(processing) {
-			let myData = processing.loadStrings('data.txt')
-		  	let mailChimpData = myData[0].split(',')
-		  	console.log(mailChimpData);
-
-			function overCircle(CenterX, CenterY, diameter) {
-			  let disX = CenterX - processing.mouseX;
-			  let disY = CenterY - processing.mouseY;
-			  if(Math.sqrt(Math.pow(disX, 2) + Math.pow(disY, 2)) < diameter/2 ) {
-			    return true;
-			  } else {
-			    return false;
-			  }
-			}
-			processing.setup = function() {
-				//setup functions
-				processing.size(900,500);
-				processing.background(0,0,0);
-		   };
-		   processing.draw = function() {
-		   		//draw functions
-		  		let toTheLeftToTheLeft = 100;
-		   		for (let i = 0; i < mailChimpData.length; i++) {
-				    if (overCircle(toTheLeftToTheLeft, 100, mailChimpData[i])) {
-					  processing.stroke(255,0,0);
-					} else {
-					  processing.stroke(255,255,255);
-					}
-					processing.noFill();
-				    processing.ellipse(toTheLeftToTheLeft, 100, mailChimpData[i], mailChimpData[i]);
-	   				toTheLeftToTheLeft = toTheLeftToTheLeft + 130;
-   				};
-
-
-
-		};
- 		
- 		};
- 		let canvas = document.getElementById("myProcessingProject");
-		let processingInstance = new Processing(canvas, sketchProc);
-	</script>
-
-</body>
+            function draw() {
+                //draw functions
+                let toTheLeftToTheLeft = 100;
+                for (let i = 0; i < mailChimpData.length; i++) {
+                    let dataValue = parseInt(mailChimpData[i]);
+                    if (overCircle(toTheLeftToTheLeft, 100, dataValue)) {
+                        stroke(255,0,0);
+                    } else {
+                        stroke(255,255,255);
+                    }
+                    noFill();
+                    ellipse(toTheLeftToTheLeft, 100, dataValue, dataValue);
+                    toTheLeftToTheLeft = toTheLeftToTheLeft + 130;
+                }
+            }
+        </script>
+    </body>
 </html>

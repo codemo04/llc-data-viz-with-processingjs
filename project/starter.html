@@ -7,29 +7,20 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<canvas id="myProcessingProject"></canvas>
-
-
 
 <script src="processing.min.js"></script>
 <script>
 
-function sketchProc(processing) {
-	processing.setup = function() {
+	function setup() {
 		//the code for your basic setup functions goes here
-		processing.size(700,500);
+		createCanvas(700,500);
 	}
 
-	processing.draw = function() {
+	function draw() {
 		//The Code you want to draw in goes here.
-		processing.background(0,0,0);
-	};
-}
+		background(0,0,0);
+	}
 	
-	let canvas = document.getElementById("myProcessingProject");
-	// attaching the sketchProc function to the canvas
-	let processingInstance = new Processing(canvas, sketchProc);
-
 </script>
 
 </body>

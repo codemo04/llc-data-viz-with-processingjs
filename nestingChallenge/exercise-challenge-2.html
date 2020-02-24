@@ -7,55 +7,45 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<canvas id="myProcessingProject"></canvas>
-
-
 
 <script src="processing.min.js"></script>
 <script>
-function sketchProc(processing) {
-	let wide = 50;
-	let high = 25;
+    let wide = 50;
+    let high = 25;
 
-	processing.setup = function() {
-		//the code for your basic setup functions goes here
-		processing.size(500,500);
-		processing.background(15,200,80);
-	}
+    function setup() {
+        //the code for your basic setup functions goes here
+        createCanvas(500,500);
+        background(15,200,80);
+    }
 
-	processing.draw = function() {
-		//The Code you want to draw in goes here.
-		
-		processing.background(15,200,80);
-		
-		if (processing.mouseX > 10 && processing.mouseX < (wide + 10) && processing.mouseY > 20 && processing.mouseY < (high + 20)) {
-			processing.fill(255,0,0);
-			processing.rect(10,20,wide,high);
-			processing.fill(0,255,0);
-			processing.ellipse(processing.mouseX, processing.mouseY, 25 + (processing.mouseY / 3), 25 + (processing.mouseY / 3));
-		} else {
-			processing.fill(0,0,255);
-			processing.rect(10,20,wide,high);
-		}
-		
+    function draw() {
+        //The Code you want to draw in goes here.
 
-		if (processing.mouseX > 10 && processing.mouseX < (wide + 10) && processing.mouseY > 80 && processing.mouseY < (high + 80)) {
-			processing.fill(0,255,0);
-			processing.rect(10,80,wide,high);
-			processing.fill(255,0,0);
-			processing.ellipse(processing.mouseX, processing.mouseY, 25 + (processing.mouseY / 3), 25 + (processing.mouseY / 3));
-		} else {
-			processing.fill(0,0,255);
-			processing.rect(10,80,wide,high);
-		}
+        background(15,200,80);
 
-	};
-}
-	
-	let canvas = document.getElementById("myProcessingProject");
-	// attaching the sketchProc function to the canvas
-	let processingInstance = new Processing(canvas, sketchProc);
+        if (mouseX > 10 && mouseX < (wide + 10) && mouseY > 20 && mouseY < (high + 20)) {
+            fill(255,0,0);
+            rect(10,20,wide,high);
+            fill(0,255,0);
+            ellipse(mouseX, mouseY, 25 + (mouseY / 3), 25 + (mouseY / 3));
+        } else {
+            fill(0,0,255);
+            rect(10,20,wide,high);
+        }
 
+
+        if (mouseX > 10 && mouseX < (wide + 10) && mouseY > 80 && mouseY < (high + 80)) {
+            fill(0,255,0);
+            rect(10,80,wide,high);
+            fill(255,0,0);
+            ellipse(mouseX, mouseY, 25 + (mouseY / 3), 25 + (mouseY / 3));
+        } else {
+            fill(0,0,255);
+            rect(10,80,wide,high);
+        }
+
+    }
 </script>
 
 </body>

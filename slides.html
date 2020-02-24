@@ -979,16 +979,13 @@ let fails = 'This string's value is not going to work!';
         To begin, we have to create an "instance" of Processing. An instance is basically a copy of the programming that is currently running. You can have more than one instance of Processing just as you can open more than one Word document at the same time.
 
         ```
-        function sketchProc(processing) {
-          processing.setup = function() {
+        function setup() {
           //the code for your basic setup functions goes here
-          };
-          processing.draw = function() {
-            //The code to describe what you want to draw goes here.
-          };
         }
-        let canvas = document.getElementById("myProcessingProject");
-        let processingInstance = new Processing(canvas, sketchProc);
+
+        function draw() {
+          //The code to describe what you want to draw goes here.
+        }
         ```
 
       </script>
@@ -1010,19 +1007,15 @@ let fails = 'This string's value is not going to work!';
       With your draw() function in place, you can now begin to add commands that will actually draw on the canvas. Directly below the comment, start playing with the rect() method. 
 
       ```
-      function sketchProc(processing) {
-        processing.setup = function() {
-          //the code for your basic setup functions goes here
-          processing.size(700,500);
-        };
-        processing.draw = function() {
-          //The code to describe what you want to draw goes here.
-          processing.rect(10,20,130,260);
-        };
+      function setup() {
+        //the code for your basic setup functions goes here
+        createCanvas(700,500);
       }
-      let canvas = document.getElementById("myProcessingProject");
-      // attaching the sketchProc function to the canvas
-      let processingInstance = new Processing(canvas, sketchProc);
+
+      function draw() {
+        //The code to describe what you want to draw goes here.
+        rect(10,20,130,260);
+      }
       ```
     </section>
 
@@ -1032,33 +1025,19 @@ let fails = 'This string's value is not going to work!';
 
         Let's break that last bit down line-by-line: Starting at the bottom.
 
-        ```
-        let canvas = document.getElementById("myProcessingProject");
-        ```
-
-        This goes and gets your canvas element, saving the HTML element into a new variable called "canvas."
-
-        ```
-        let processingInstance = new Processing(canvas, sketchProc);
-        ```
-        This starts up a new Processing program and sends it two things: Your canvas, and the name of the function that will control how it behaves. 
-
         This sends us back to the top of our sketchProc function to do some setup tasks: 
 
         ```javascript
-        function sketchProc(processing) {
-            processing.setup = function() {
-              //the code for your basic setup functions goes here
-              processing.size(700,500);
-            };
-            processing.draw = function() {
-              //The code to describe what you want to draw goes here.
-              processing.rect(10,20,130,260);
-            };
+          function setup() {
+            //the code for your basic setup functions goes here
+            createCanvas(700,500);
+          }
+
+          function draw() {
+            //The code to describe what you want to draw goes here.
+            rect(10,20,130,260);
           }
         ```
-        sketchProc() is the name of our function that controls how our canvas behaves.
-
       </script>
     </section>
 
@@ -1066,20 +1045,19 @@ let fails = 'This string's value is not going to work!';
       <script type="text/template">
         #Setup() and Draw()
 
-        These two functions can be confusing at first. Setup(), though, is only ever run once. It does the basic construction, sets your overall preferences, sets the size of your canvas and sets the background colour. All your "initial states", as the lingo goes, go in the setup() function.
+        These two functions can be confusing at first. setup(), though, is only ever run once. It does the basic construction, sets your overall preferences, sets the size of your canvas and sets the background colour. All your "initial states", as the lingo goes, go in the setup() function.
 
         The draw() function includes everything that's added on top of the initial state. In our case, that includes drawing a rectangle on top of our canvas background.
   
         ```
-        function sketchProc(processing) {
-            processing.setup = function() {
-              //the code for your basic setup functions goes here
-              processing.size(700,500);
-            };
-            processing.draw = function() {
-              //The code to describe what you want to draw goes here.
-              processing.rect(10,20,130,260);
-            };
+          setup() {
+            //the code for your basic setup functions goes here
+            createCanvas(700,500);
+          }
+
+          draw() {
+            //The code to describe what you want to draw goes here.
+            rect(10,20,130,260);
           }
         ```
         
@@ -1090,10 +1068,10 @@ let fails = 'This string's value is not going to work!';
       <script type="text/template">
         #Coordinates are weird
 
-        A lot of the elements you draw in Processing will use a coordinate system to tell them where they should be. These often look like your rect() method on the previous slides. 
+        A lot of the elements you draw in Processing will use a coordinate system to tell them where they should be. These often look like your rect() function on the previous slides. 
 
         ```
-          processing.rect(10,20,130,260);
+          rect(10,20,130,260);
         ```
 
         These are x and y values, then the width and height values. So the top-left corner of the rectangle is at 10 pixels from the left of the canvas edge (the x value) and 20 pixels from the top of the canvas edge (the y value). 
@@ -1103,7 +1081,7 @@ let fails = 'This string's value is not going to work!';
         Similarly, you can have an ellipse: 
 
         ```
-         processing.ellipse(50, 50, 25, 25);
+          ellipse(50, 50, 25, 25);
         ```
         
         The first set of coordinates is the center of the ellipse (x and y) and the second two numbers are how tall and wide it is. 
@@ -1129,20 +1107,20 @@ let fails = 'This string's value is not going to work!';
         The trick here is just to increase the start coordinates and end coordinates by a little bit each time you build each rectangle. 
 
         ```
-        processing.rect(10,20,40,70);
-        processing.rect(30,20,60,70);
-        processing.rect(50,20,80,70);
-        processing.rect(70,20,100,70);
+        rect(10,20,40,70);
+        rect(30,20,60,70);
+        rect(50,20,80,70);
+        rect(70,20,100,70);
         ```
         
         Or, you can stagger them both ways by incrementing both 
         parameters.
 
         ```
-        processing.rect(10,20,40,70);
-        processing.rect(30,40,60,90);
-        processing.rect(50,60,80,110);
-        processing.rect(70,80,100,130);
+        rect(10,20,40,70);
+        rect(30,40,60,90);
+        rect(50,60,80,110);
+        rect(70,80,100,130);
         ```
 
       </script>
@@ -1162,7 +1140,7 @@ let fails = 'This string's value is not going to work!';
       <script type="text/template">
         #Challenge: The case of the growing rect() (code-along)
 
-        JavaScript lets you establish global variables that can start off as one value, but adjust as the program runs. So at the top of your sketchProc function, add these two variables:
+        JavaScript lets you establish global variables that can start off as one value, but adjust as the program runs. So at the top of your script, add these two variables:
 
         ```
         let wide = 10;
@@ -1205,14 +1183,14 @@ let fails = 'This string's value is not going to work!';
         Let's look back at that ellipse we started drawing earlier. 
 
         ```
-        processing.ellipse(50, 50, 25, 25);
+        ellipse(50, 50, 25, 25);
         ```
 
         Add that right after your rect() inside your draw function to make your draw function read like this: 
 
         ```
-        processing.rect(10,20,wide,high);
-        processing.ellipse(50, 50, 25, 25);
+        rect(10,20,wide,high);
+        ellipse(50, 50, 25, 25);
         wide = wide + 0.1;
         high = high + 0.2;
         ```
@@ -1229,29 +1207,29 @@ let fails = 'This string's value is not going to work!';
       <script type="text/template">
         # Working with colour
 
-        The processing.fill() method allows you to set the fill colour of any element you draw on your canvas. Once you set fill(), though, it applies to all draw commands that come after it. All colour values are supplied as RGB values. 
+        The fill() method allows you to set the fill colour of any element you draw on your canvas. Once you set fill(), though, it applies to all draw commands that come after it. All colour values are supplied as RGB values. 
 
         ```
-        processing.fill(255,0,0);
-        processing.rect(10,20,wide,high);
-        processing.ellipse(50, 50, 25, 25);
+        fill(255,0,0);
+        rect(10,20,wide,high);
+        ellipse(50, 50, 25, 25);
         ```
 
         The above makes both the rectangle and the ellipse bright red. But: 
 
         ```
-        processing.fill(255,0,0);
-        processing.rect(10,20,wide,high);
-        processing.fill(0,255,0);
-        processing.ellipse(50, 50, 25, 25);
+        fill(255,0,0);
+        rect(10,20,wide,high);
+        fill(0,255,0);
+        ellipse(50, 50, 25, 25);
         ```
 
         This makes a red rectangle and a green ellipse on top of it. 
 
-        Similarly, in setup() you can set processing.background() as an rgb value to shift it away from this dull default gray. 
+        Similarly, in setup() you can set background() as an rgb value to shift it away from this dull default gray. 
 
         ```
-        processing.background(15,200,80);
+        background(15,200,80);
         ```
       </script>
     </section>
@@ -1260,11 +1238,11 @@ let fails = 'This string's value is not going to work!';
       <script type="text/template">
         # Adding interactivity
 
-        One of the easiest ways to add interactivity to your Processing visualization is by tracking mouse movements over the page (or finger presses, as is often the case). Processing comes with a few methods that help with this. 
+        One of the easiest ways to add interactivity to your Processing visualization is by tracking mouse movements over the page (or finger presses, as is often the case). Processing comes with a few built-in variables that help with this. 
 
         ```
-          let mouseXposition = processing.mouseX;
-          let mouseYposition = processing.mouseY;
+          let mouseXposition = mouseX;
+          let mouseYposition = mouseY;
         ```
 
         You can use these values to identify where your shapes should appear on your canvas. For example, let's change the center of where our circle is drawn to make it match our mouse position. The circle can therefore track our mouse movements. 
@@ -1272,7 +1250,7 @@ let fails = 'This string's value is not going to work!';
         In your draw() function, adjust your ellipse command to:
         
         ```
-          processing.ellipse(processing.mouseX, processing.mouseY, 25, 25);
+          ellipse(mouseX, mouseY, 25, 25);
         ```
         
         Now run your app. 
@@ -1291,7 +1269,7 @@ let fails = 'This string's value is not going to work!';
         The fix this, add this one line to the top of your draw() command. 
 
         ```
-          processing.background(15,200,80);
+          background(15,200,80);
         ```
 
         You can reset the background of your app on each cycle so none of it draws on top of itself, making for a much cleaner, and more magic, look. 
@@ -1332,10 +1310,10 @@ let fails = 'This string's value is not going to work!';
         This extensive list of conditions (four of them, one for each side of our square), asks if the mouse is inside the boundaries of our rectangle. 
 
         ```
-        if (processing.mouseX > 10 && processing.mouseX < (wide + 10) && processing.mouseY > 20 && processing.mouseY < (high + 20)) {
-          processing.fill(255,0,0);
+        if (mouseX > 10 && mouseX < (wide + 10) && mouseY > 20 && mouseY < (high + 20)) {
+          fill(255,0,0);
         } else {
-          processing.fill(0,0,255);
+          fill(0,0,255);
         }
         ```
 
@@ -1371,24 +1349,24 @@ let fails = 'This string's value is not going to work!';
         Note that the trick here is that you technically detect where your rectangle is going to be before you even draw it, which can be a bit of a mind bend.
 
         ```javascript
-        if (processing.mouseX > 10 && processing.mouseX < (wide + 10) && processing.mouseY > 20 && processing.mouseY < (high + 20)) {
-          processing.fill(255,0,0);
-          processing.rect(10,20,wide,high);
-          processing.fill(0,255,0);
-          processing.ellipse(processing.mouseX, processing.mouseY, 25, 25);
+        if (mouseX > 10 && mouseX < (wide + 10) && mouseY > 20 && mouseY < (high + 20)) {
+          fill(255,0,0);
+          rect(10,20,wide,high);
+          fill(0,255,0);
+          ellipse(mouseX, mouseY, 25, 25);
         } else {
-          processing.fill(0,0,255);
-          processing.rect(10,20,wide,high);
+          fill(0,0,255);
+          rect(10,20,wide,high);
         }
 
-        if (processing.mouseX > 10 && processing.mouseX < (wide + 10) && processing.mouseY > 80 && processing.mouseY < (high + 80)) {
-          processing.fill(0,255,0);
-          processing.rect(10,80,wide,high);
-          processing.fill(255,0,0);
-          processing.ellipse(processing.mouseX, processing.mouseY, 25, 25);
+        if (mouseX > 10 && mouseX < (wide + 10) && mouseY > 80 && mouseY < (high + 80)) {
+          fill(0,255,0);
+          rect(10,80,wide,high);
+          fill(255,0,0);
+          ellipse(mouseX, mouseY, 25, 25);
         } else {
-          processing.fill(0,0,255);
-          processing.rect(10,80,wide,high);
+          fill(0,0,255);
+          rect(10,80,wide,high);
         }
       ```
 
@@ -1399,40 +1377,39 @@ let fails = 'This string's value is not going to work!';
       <script type="text/template">
         #Stretch goal answer
 
-        Changing the size of the circle depending on where your mouse is means you have to modify that one line: processing.ellipse.
+        Changing the size of the circle depending on where your mouse is means you have to modify that one line: ellipse.
 
         Instead of a static value of 25 for the height and width, we can pay attention to where the mouse is. Then we can incorporate that number into a calculation to determine the new height. That might look like: 
 
         ```
-        25 + (processing.mouseY / 3)
+        25 + (mouseY / 3)
         ``` 
 
         The 25 is our base value, the smallest we want the circle to be. Then we add the mouseY to it. The / 3 is just to make the difference less jarring. It's stylistic. Mess with it and see what happens. 
 
         The full solution is: 
 
+        ```javascript
+        if (mouseX > 10 && mouseX < (wide + 10) && mouseY > 20 && mouseY < (high + 20)) {
+          fill(255,0,0);
+          rect(10,20,wide,high);
+          fill(0,255,0);
+          ellipse(mouseX, mouseY, 25 + (mouseY / 3), 25 + (mouseY / 3));
+        } else {
+          fill(0,0,255);
+          rect(10,20,wide,high);
+        }
 
-      ```
-      if (processing.mouseX > 10 && processing.mouseX < (wide + 10) && processing.mouseY > 20 && processing.mouseY < (high + 20)) {
-      processing.fill(255,0,0);
-      processing.rect(10,20,wide,high);
-      processing.fill(0,255,0);
-      processing.ellipse(processing.mouseX, processing.mouseY, 25 + (processing.mouseY / 3), 25 + (processing.mouseY / 3));
-      } else {
-      processing.fill(0,0,255);
-      processing.rect(10,20,wide,high);
-      }
-
-      if (processing.mouseX > 10 && processing.mouseX < (wide + 10) && processing.mouseY > 80 && processing.mouseY < (high + 80)) {
-      processing.fill(0,255,0);
-      processing.rect(10,80,wide,high);
-      processing.fill(255,0,0);
-      processing.ellipse(processing.mouseX, processing.mouseY, 25 + (processing.mouseY / 3), 25 + (processing.mouseY / 3));
-      } else {
-      processing.fill(0,0,255);
-      processing.rect(10,80,wide,high);
-      }
-      ```
+        if (mouseX > 10 && mouseX < (wide + 10) && mouseY > 80 && mouseY < (high + 80)) {
+          fill(0,255,0);
+          rect(10,80,wide,high);
+          fill(255,0,0);
+          ellipse(mouseX, mouseY, 25 + (mouseY / 3), 25 + (mouseY / 3));
+        } else {
+          fill(0,0,255);
+          rect(10,80,wide,high);
+        }
+        ```
 
       </script>
     </section>
@@ -1471,7 +1448,7 @@ let fails = 'This string's value is not going to work!';
         We can do this before we even run our setup() function: 
 
         ```
-          let myData = processing.loadStrings('data.txt');
+          let myData = loadStrings('data.txt');
           let mailChimpData = myData[0].split(',');
           console.log(mailChimpData);
         ```
@@ -1494,10 +1471,10 @@ let fails = 'This string's value is not going to work!';
         As before, you should create a setup() function that will establish the base of your canvas: 
 
         ```
-          processing.setup = function() {
+          function setup() {
             //the code for your basic setup functions goes here
-            processing.size(700,500);
-            processing.background(0,0,0);
+            createCanvas(700,500);
+            background(0,0,0);
           }
         ```
       </script>
@@ -1510,12 +1487,13 @@ let fails = 'This string's value is not going to work!';
         Now, just like the last example, we can setup a draw() function that will loop 60 times per second to draw our data. 
 
         ```
-        processing.draw = function() {
+        function draw() {
           //The Code you want to draw in goes here.
-          processing.background(0,0,0);
+          background(0,0,0);
            for (let i = 0; i < mailChimpData.length; i++) {
-            processing.fill(255,255,255);
-            processing.ellipse(100, 100, mailChimpData[i], mailChimpData[i]);
+            let dataValue = parseInt(mailChimpData[i]);
+            fill(255,255,255);
+            ellipse(100, 100, dataValue, dataValue);
            }
         };
 
@@ -1545,8 +1523,8 @@ let fails = 'This string's value is not going to work!';
         Enter: The stroke values. 
 
         ```
-        processing.stroke(255,255,255);
-        processing.noFill();
+        stroke(255,255,255);
+        noFill();
         ```
 
         These two lines will make sure there isn't any fill in your circles, and they'll give it a white stroke. Go ahead and pick your favourite colour to use.
@@ -1569,7 +1547,7 @@ let fails = 'This string's value is not going to work!';
         Then you can change your ellipsis() command to include that variable on the x-axis -- the horizontal axis. 
 
         ```
-        processing.ellipse(toTheLeftToTheLeft, 100, mailChimpData[i], mailChimpData[i]);
+        ellipse(toTheLeftToTheLeft, 100, dataValue, dataValue);
         ```
 
         Then, at the bottom of your loop, change that variable for the next circle in line to be drawn. 
@@ -1588,17 +1566,18 @@ let fails = 'This string's value is not going to work!';
         At this point, your complete draw() function should look something like this: 
 
         ```
-        processing.draw = function() {
+        function draw() {
             //The Code you want to draw in goes here.
-            processing.background(0,0,0);
+            background(0,0,0);
             let toTheLeftToTheLeft = 75;
-             for (let i = 0; i < mailChimpData.length; i++) {
-              processing.stroke(255,255,255);
-              processing.noFill();
-              processing.ellipse(toTheLeftToTheLeft, 100, mailChimpData[i], mailChimpData[i]);
+            for (let i = 0; i < mailChimpData.length; i++) {
+              let dataValue = parseInt(mailChimpData[i]);
+              stroke(255,255,255);
+              noFill();
+              ellipse(toTheLeftToTheLeft, 100, dataValue, dataValue);
               toTheLeftToTheLeft = toTheLeftToTheLeft + 130;
-             };
-        };
+            }
+        }
         ```
       </script>
     </section>
@@ -1611,13 +1590,13 @@ let fails = 'This string's value is not going to work!';
 
         Of course it is. 
 
-        This part is a little complicated, but if you place this function just above your setup() function, but inside your sketchProc() function, you can test to see if your cursor is inside each circle. 
+        This part is a little complicated, but if you place this function just above your setup() function, you can test to see if your cursor is inside each circle. 
 
-        ```
-        function overCircle(CenterX, CenterY, diameter) {
-          let disX = CenterX - processing.mouseX;
-          let disY = CenterY - processing.mouseY;
-          if(Math.sqrt(Math.pow(disX, 2) + Math.pow(disY, 2)) < diameter/2 ) {
+        ```javascript
+        function overCircle(centerX, centerY, diameter) {
+          let disX = centerX - mouseX;
+          let disY = centerY - mouseY;
+          if(sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
             return true;
           } else {
             return false;
@@ -1636,10 +1615,10 @@ let fails = 'This string's value is not going to work!';
         That function exists to test if your cursor is inside the circle. Now we need to call it inside our draw() function so we can use it. Update your draw function to call that function each time a circle is drawn: 
 
         ```
-        if (overCircle(toTheLeftToTheLeft, 100, mailChimpData[i])) {
-          processing.stroke(255,0,0);
+        if (overCircle(toTheLeftToTheLeft, 100, dataValue) {
+          stroke(255,0,0);
         } else {
-          processing.stroke(255,255,255);
+          stroke(255,255,255);
         }
 
         ```
@@ -1661,8 +1640,8 @@ let fails = 'This string's value is not going to work!';
         So before you adjust your toTheLeftToTheLeft variable, but after you add your ellipsis, add these two lines: 
 
         ```
-        processing.fill(255,255,255);
-        processing.text('Test Text', toTheLeftToTheLeft - 25, 200);
+        fill(255,255,255);
+        text('Test Text', toTheLeftToTheLeft - 25, 200);
         ```
 
         We add the -25 so that we can backtrack the text to center it under the circle. The 200 is how far from the top of the canvas the text is. "Test Text" is the text that will actually appear in your graphic. 
@@ -1703,7 +1682,7 @@ let fails = 'This string's value is not going to work!';
         Now instead of "Test text" you can insert your appropriate label. Change your text() command to: 
 
         ```
-        processing.text(labels[i], toTheLeftToTheLeft - 25, 200);
+        text(labels[i], toTheLeftToTheLeft - 25, 200);
 
         ```
         The labels[i] will refers to master array of labels at the top of the program, and the i refers to the loop through your circle construction. 
